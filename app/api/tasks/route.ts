@@ -42,7 +42,8 @@ export async function POST(req: NextRequest) {
     let email: string | null = null;
     let name: string | null = null;
     try {
-      const clerkUser = await clerkClient.users.getUser(userId);
+      const clerk = await clerkClient();
+      const clerkUser = await clerk.users.getUser(userId);
       email = clerkUser.emailAddresses?.[0]?.emailAddress ?? null;
       name = clerkUser.firstName || clerkUser.lastName || clerkUser.fullName || null;
     } catch (e) {
