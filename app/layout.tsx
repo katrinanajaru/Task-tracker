@@ -27,17 +27,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ClerkProvider>
-          <header className="flex justify-between items-center p-4 gap-4 h-16 bg-white/80 shadow-sm sticky top-0 z-20 backdrop-blur-md">
+          <header className="flex justify-between items-center p-4 gap-4 h-16 bg-blue-600/95 text-white shadow-sm sticky top-0 z-20 backdrop-blur-md">
             <div className="font-semibold text-xl">Task Tracker</div>
             <div className="flex items-center gap-3">
               <Show when="signed-out">
                 <SignInButton>
-                  <button className="rounded-full bg-black px-4 py-2 text-sm text-white">
+                  <button className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50">
                     Log in
                   </button>
                 </SignInButton>
                 <SignUpButton>
-                  <button className="rounded-full border border-black px-4 py-2 text-sm">
+                  <button className="rounded-full border border-white px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">
                     Sign up
                   </button>
                 </SignUpButton>

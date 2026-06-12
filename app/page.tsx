@@ -6,21 +6,21 @@ export default async function Home() {
   const { userId } = await auth();
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black px-6 py-12">
-      <main className="w-full max-w-3xl rounded-[2rem] border border-zinc-200 bg-white p-10 shadow-xl dark:border-zinc-800 dark:bg-zinc-950">
+    <div className="flex flex-col min-h-screen items-center justify-center bg-blue-50 font-sans px-6 py-12">
+      <main className="w-full max-w-3xl rounded-[2rem] border border-blue-100 bg-white p-10 shadow-xl">
         <div className="flex flex-col items-center gap-6 text-center">
           <Image
-            className="dark:invert"
+            className="invert-[0.1]"
             src="/next.svg"
             alt="Next.js logo"
             width={100}
             height={20}
             priority
           />
-          <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 dark:text-white">
+          <h1 className="text-4xl font-semibold tracking-tight text-blue-900">
             {userId ? "Welcome back!" : "Welcome to Task Tracker"}
           </h1>
-          <p className="max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+          <p className="max-w-2xl text-lg leading-8 text-blue-600">
             {userId
               ? "You are signed in. Visit the tasks page to view your Neon-backed tasks."
               : "Sign in or sign up to access your task list and connect it with Neon."}
@@ -30,7 +30,7 @@ export default async function Home() {
           {userId ? (
             <Link
               href="/tasks"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-black px-6 text-sm font-semibold text-white transition hover:bg-zinc-900"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-6 text-sm font-semibold text-white transition hover:bg-blue-700"
             >
               View Tasks
             </Link>
@@ -38,13 +38,13 @@ export default async function Home() {
             <>
               <Link
                 href="/login"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-black px-6 text-sm font-semibold text-white transition hover:bg-zinc-900"
+                className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-6 text-sm font-semibold text-white transition hover:bg-blue-700"
               >
                 Log In
               </Link>
               <Link
                 href="/signup"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-zinc-300 bg-white px-6 text-sm font-semibold text-zinc-950 transition hover:border-zinc-400 hover:bg-zinc-50"
+                className="inline-flex h-12 items-center justify-center rounded-full border border-blue-200 bg-white px-6 text-sm font-semibold text-blue-700 transition hover:border-blue-300 hover:bg-blue-50"
               >
                 Sign Up
               </Link>

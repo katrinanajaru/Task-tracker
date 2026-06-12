@@ -168,8 +168,8 @@ export default function TaskManager({ userId }: Props) {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
-        <h2 className="text-2xl font-semibold">Create a new task</h2>
+      <section className="rounded-3xl border border-blue-100 bg-white p-8 shadow-sm">
+        <h2 className="text-2xl font-semibold text-blue-700">Create a new task</h2>
         <form onSubmit={handleAddTask} className="mt-6 space-y-4">
           <div>
             <label className="block text-sm font-medium text-zinc-700">Title</label>
@@ -194,7 +194,7 @@ export default function TaskManager({ userId }: Props) {
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-zinc-900 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Add Task
             </button>
@@ -206,8 +206,8 @@ export default function TaskManager({ userId }: Props) {
                   onClick={() => setFilter(item.value)}
                   className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                     filter === item.value
-                      ? 'bg-black text-white'
-                      : 'border border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50'
+                      ? 'bg-blue-600 text-white'
+                      : 'border border-blue-200 bg-white text-blue-700 hover:bg-blue-50'
                   }`}
                 >
                   {item.label}
@@ -224,28 +224,28 @@ export default function TaskManager({ userId }: Props) {
         </section>
       ) : null}
 
-      <section className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
+      <section className="rounded-3xl border border-blue-100 bg-white p-8 shadow-sm">
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-2xl font-semibold">Tasks</h2>
-            <p className="text-sm text-zinc-500">Manage your Neon tasks here.</p>
+            <h2 className="text-2xl font-semibold text-blue-700">Tasks</h2>
+            <p className="text-sm text-blue-600">Manage your Neon tasks here.</p>
           </div>
           <button
             type="button"
             onClick={refreshTasks}
             disabled={loading}
-            className="inline-flex items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-semibold text-zinc-700 hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-100 disabled:cursor-not-allowed disabled:opacity-50"
           >
             Refresh
           </button>
         </div>
 
         {loading ? (
-          <div className="rounded-3xl border border-dashed border-zinc-200 p-10 text-center text-zinc-500">
+          <div className="rounded-3xl border border-dashed border-blue-100 p-10 text-center text-blue-600">
             Loading tasks...
           </div>
         ) : filteredTasks.length === 0 ? (
-          <div className="rounded-3xl border border-dashed border-zinc-200 p-10 text-center text-zinc-500">
+          <div className="rounded-3xl border border-dashed border-blue-100 p-10 text-center text-blue-600">
             No tasks found.
           </div>
         ) : (
@@ -258,13 +258,13 @@ export default function TaskManager({ userId }: Props) {
                     <p className="mt-2 text-sm leading-6 text-zinc-600">{task.description || 'No description'}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <button
+                      <button
                       type="button"
                       onClick={() => handleToggleComplete(task)}
                       className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                         task.completed
-                          ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'
-                          : 'bg-zinc-100 text-zinc-800 hover:bg-zinc-200'
+                          ? 'bg-blue-100 text-blue-800 hover:bg-blue-200'
+                          : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
                       }`}
                     >
                       {task.completed ? 'Mark Pending' : 'Mark Complete'}
@@ -272,7 +272,7 @@ export default function TaskManager({ userId }: Props) {
                     <button
                       type="button"
                       onClick={() => handleDeleteTask(task.id)}
-                      className="rounded-full bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-100"
+                      className="rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100"
                     >
                       Delete
                     </button>

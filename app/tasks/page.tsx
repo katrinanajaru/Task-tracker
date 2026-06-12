@@ -27,12 +27,12 @@ export default async function TasksPage() {
       <div className="mx-auto max-w-5xl rounded-3xl bg-white p-10 shadow-xl">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-semibold">Your tasks</h1>
-            <p className="mt-2 text-sm text-zinc-500">Manage tasks with Neon and Clerk auth.</p>
+            <h1 className="text-3xl font-semibold text-blue-700">Your tasks</h1>
+            <p className="mt-2 text-sm text-blue-600">Manage tasks with Neon and Clerk auth.</p>
           </div>
           <Link
             href="/"
-            className="rounded-full border border-zinc-200 px-4 py-2 text-sm text-zinc-700"
+            className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-100"
           >
             Home
           </Link>
