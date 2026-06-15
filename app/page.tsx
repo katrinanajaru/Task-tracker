@@ -9,22 +9,17 @@ export default async function Home() {
     <div className="flex flex-col min-h-screen items-center justify-center bg-blue-50 font-sans px-6 py-12">
       <main className="w-full max-w-3xl rounded-[2rem] border border-blue-100 bg-white p-10 shadow-xl">
         <div className="flex flex-col items-center gap-6 text-center">
-          <Image
-            className="invert-[0.1]"
-            src="/next.svg"
-            alt="Next.js logo"
-            width={100}
-            height={20}
-            priority
-          />
+          <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-blue-100 text-blue-700 shadow-sm">
+            <span className="text-2xl font-bold">TT</span>
+          </div>
           <h1 className="text-4xl font-semibold tracking-tight text-blue-900">
             {userId ? "Welcome back!" : "Welcome to Task Tracker"}
           </h1>
-          <p className="max-w-2xl text-lg leading-8 text-blue-600">
-            {userId
-              ? "You are signed in. Visit the tasks page to view your Neon-backed tasks."
-              : "Sign in or sign up to access your task list and connect it with Neon."}
-          </p>
+          {userId ? (
+            <p className="max-w-2xl text-lg leading-8 text-blue-600">
+              You are signed in. Visit the tasks page to view your Neon-backed tasks.
+            </p>
+          ) : null}
         </div>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
           {userId ? (
