@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
@@ -37,15 +36,6 @@ export default async function Home() {
               <span className="block text-2xl font-semibold text-slate-950">03</span>
               Save your list securely with your account.
             </div>
-          </div>
-
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/login"
-              className="inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-6 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
-            >
-              Log in or sign up
-            </Link>
           </div>
         </section>
       </main>
