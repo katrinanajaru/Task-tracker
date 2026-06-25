@@ -1,17 +1,7 @@
 import type { Metadata } from 'next'
-import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
-import { Geist, Geist_Mono } from 'next/font/google'
+import Link from 'next/link'
+import { ClerkProvider, Show, UserButton } from '@clerk/nextjs'
 import './globals.css'
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
 
 export const metadata: Metadata = {
   title: 'Task Tracker',
@@ -25,23 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body>
         <ClerkProvider>
-          <header className="flex justify-between items-center p-4 gap-4 h-16 bg-blue-600/95 text-white shadow-sm sticky top-0 z-20 backdrop-blur-md">
-            <div className="font-semibold text-xl">Task Tracker</div>
+          <header className="sticky top-0 z-20 flex h-16 items-center justify-between gap-4 border-b border-slate-200/80 bg-white/90 px-5 text-slate-950 shadow-sm backdrop-blur-md">
+            <Link href="/" className="font-semibold text-xl tracking-tight">
+              Task Tracker
+            </Link>
             <div className="flex items-center gap-3">
-              <Show when="signed-out">
-                <SignInButton>
-                  <button className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50">
-                    Log in
-                  </button>
-                </SignInButton>
-                <SignUpButton>
-                  <button className="rounded-full border border-white px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">
-                    Sign up
-                  </button>
-                </SignUpButton>
-              </Show>
               <Show when="signed-in">
                 <UserButton />
               </Show>

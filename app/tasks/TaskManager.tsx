@@ -21,6 +21,10 @@ const FILTERS = [
   { value: 'pending', label: 'Pending' },
 ] as const;
 
+function getErrorMessage(error: unknown, fallback: string) {
+  return error instanceof Error ? error.message : fallback;
+}
+
 export default function TaskManager({ userId }: Props) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [title, setTitle] = useState('');
@@ -49,8 +53,8 @@ export default function TaskManager({ userId }: Props) {
         }
 
         setTasks(data);
-      } catch (err: any) {
-        setError(err.message || 'Unable to load tasks.');
+      } catch (err: unknown) {
+        setError(getErrorMessage(err, 'Unable to load tasks.'));
       } finally {
         setLoading(false);
       }
@@ -72,8 +76,8 @@ export default function TaskManager({ userId }: Props) {
       }
 
       setTasks(data);
-    } catch (err: any) {
-      setError(err.message || 'Unable to refresh tasks.');
+    } catch (err: unknown) {
+      setError(getErrorMessage(err, 'Unable to refresh tasks.'));
     } finally {
       setLoading(false);
     }
@@ -111,8 +115,8 @@ export default function TaskManager({ userId }: Props) {
       setTasks((current) => [data, ...current]);
       setTitle('');
       setDescription('');
-    } catch (err: any) {
-      setError(err.message || 'Unable to add task.');
+    } catch (err: unknown) {
+      setError(getErrorMessage(err, 'Unable to add task.'));
     } finally {
       setLoading(false);
     }
@@ -137,8 +141,8 @@ export default function TaskManager({ userId }: Props) {
       }
 
       setTasks((current) => current.map((item) => (item.id === task.id ? data : item)));
-    } catch (err: any) {
-      setError(err.message || 'Unable to update task.');
+    } catch (err: unknown) {
+      setError(getErrorMessage(err, 'Unable to update task.'));
     } finally {
       setLoading(false);
     }
@@ -159,8 +163,8 @@ export default function TaskManager({ userId }: Props) {
       }
 
       setTasks((current) => current.filter((item) => item.id !== taskId));
-    } catch (err: any) {
-      setError(err.message || 'Unable to delete task.');
+    } catch (err: unknown) {
+      setError(getErrorMessage(err, 'Unable to delete task.'));
     } finally {
       setLoading(false);
     }
@@ -228,7 +232,7 @@ export default function TaskManager({ userId }: Props) {
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-2xl font-semibold text-blue-700">Tasks</h2>
-            <p className="text-sm text-blue-600">Manage your Neon tasks here.</p>
+            <p className="text-sm text-blue-600">Review, update, and finish your tasks here.</p>
           </div>
           <button
             type="button"

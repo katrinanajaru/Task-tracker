@@ -29,7 +29,7 @@ function getPool(): Pool {
 }
 
 export const db = {
-  query: async (query: string, params?: any[]) => {
+  query: async (query: string, params?: unknown[]) => {
     try {
       const client = await getPool().connect();
       try {

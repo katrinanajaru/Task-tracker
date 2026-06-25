@@ -1,51 +1,48 @@
 import Link from "next/link";
-import Image from "next/image";
 import { auth } from "@clerk/nextjs/server";
 
 export default async function Home() {
   const { userId } = await auth();
 
   return (
-    <div className="flex flex-col min-h-screen items-center justify-center bg-blue-50 font-sans px-6 py-12">
-      <main className="w-full max-w-3xl rounded-[2rem] border border-blue-100 bg-white p-10 shadow-xl">
-        <div className="flex flex-col items-center gap-6 text-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-blue-100 text-blue-700 shadow-sm">
-            <span className="text-2xl font-bold">TT</span>
-          </div>
-          <h1 className="text-4xl font-semibold tracking-tight text-blue-900">
-            {userId ? "Welcome back!" : "Welcome to Task Tracker"}
+    <div className="min-h-[calc(100vh-4rem)] bg-slate-50">
+      <main className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-4xl items-center px-6 py-10">
+        <section className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
+            Simple daily planning
+          </p>
+          <h1 className="mt-5 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+            {userId ? "Welcome back to your task tracker." : "Track your tasks without losing your day."}
           </h1>
-          {userId ? (
-            <p className="max-w-2xl text-lg leading-8 text-blue-600">
-              You are signed in. Visit the tasks page to view your Neon-backed tasks.
-            </p>
-          ) : null}
-        </div>
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
-          {userId ? (
+          <p className="mt-5 text-lg leading-8 text-slate-600">
+            Keep your important work in one clean place. Add tasks, describe the next step,
+            mark progress, and come back to a list that still makes sense tomorrow.
+          </p>
+
+          <div className="mt-8 grid gap-3 text-sm text-slate-700 sm:grid-cols-3">
+            <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <span className="block text-2xl font-semibold text-slate-950">01</span>
+              Capture new tasks before they disappear.
+            </div>
+            <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <span className="block text-2xl font-semibold text-slate-950">02</span>
+              Filter what is done and what still needs action.
+            </div>
+            <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <span className="block text-2xl font-semibold text-slate-950">03</span>
+              Save your list securely with your account.
+            </div>
+          </div>
+
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/tasks"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-6 text-sm font-semibold text-white transition hover:bg-blue-700"
+              href={userId ? "/tasks" : "/login"}
+              className="inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-6 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
             >
-              View Tasks
+              {userId ? "Open my tasks" : "Log in or sign up"}
             </Link>
-          ) : (
-            <>
-              <Link
-                href="/login"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-6 text-sm font-semibold text-white transition hover:bg-blue-700"
-              >
-                Log In
-              </Link>
-              <Link
-                href="/signup"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-blue-200 bg-white px-6 text-sm font-semibold text-blue-700 transition hover:border-blue-300 hover:bg-blue-50"
-              >
-                Sign Up
-              </Link>
-            </>
-          )}
-        </div>
+          </div>
+        </section>
       </main>
     </div>
   );

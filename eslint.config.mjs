@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "tmp-db-check.js",
+    "tmp-db-check2.js",
   ]),
 ]);
 

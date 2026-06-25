@@ -11,8 +11,8 @@ export async function PUT(
     const body = await req.json();
     const { title, description, completed } = body;
 
-    let updateFields = [];
-    let values: any[] = [];
+    const updateFields: string[] = [];
+    const values: unknown[] = [];
     let paramCount = 1;
 
     if (title !== undefined) {
