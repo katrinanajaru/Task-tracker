@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
   const { userId } = await auth();
+
+  if (userId) {
+    redirect("/tasks");
+  }
 
   return (
     <div className="min-h-[calc(100vh-4rem)] bg-slate-50">
@@ -36,10 +41,10 @@ export default async function Home() {
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link
-              href={userId ? "/tasks" : "/login"}
+              href="/login"
               className="inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-6 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
             >
-              {userId ? "Open my tasks" : "Log in or sign up"}
+              Log in or sign up
             </Link>
           </div>
         </section>

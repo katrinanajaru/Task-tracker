@@ -22,6 +22,20 @@ export default function RootLayout({
               Task Tracker
             </Link>
             <div className="flex items-center gap-3">
+              <Show when="signed-out">
+                <Link
+                  href="/login"
+                  className="rounded-md px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-950"
+                >
+                  Log in
+                </Link>
+                <Link
+                  href="/login#signup"
+                  className="rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800"
+                >
+                  Sign up
+                </Link>
+              </Show>
               <Show when="signed-in">
                 <UserButton />
               </Show>
