@@ -17,8 +17,17 @@ export default function AuthPanel() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const clerkAppearance = {
+    elements: {
+      rootBox: 'w-full',
+      cardBox: 'w-full shadow-none',
+      card: 'w-full p-0 shadow-none',
+      footer: 'text-sm',
+    },
+  };
+
   return (
-    <div className="w-full max-w-md rounded-lg border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/10">
+    <div className="w-full max-w-md overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-xl shadow-slate-900/10 sm:p-5">
       <div className="grid grid-cols-2 rounded-md bg-slate-100 p-1">
         <button
           type="button"
@@ -51,6 +60,7 @@ export default function AuthPanel() {
             signUpUrl="/login#signup"
             fallbackRedirectUrl="/tasks"
             forceRedirectUrl="/tasks"
+            appearance={clerkAppearance}
           />
         ) : (
           <SignUp
@@ -58,6 +68,7 @@ export default function AuthPanel() {
             signInUrl="/login"
             fallbackRedirectUrl="/tasks"
             forceRedirectUrl="/tasks"
+            appearance={clerkAppearance}
           />
         )}
       </div>
